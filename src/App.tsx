@@ -3,7 +3,7 @@ import React from "react";
 function App() {
   return (
     <div>
-      <h1>Hello world -test</h1>
+      <h1>Hello world - test 중입니다</h1>
     </div>
   );
 }
