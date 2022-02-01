@@ -12,6 +12,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
       - name: checkout frontend
         uses: actions/checkout@v2
       - name: checkout backend
