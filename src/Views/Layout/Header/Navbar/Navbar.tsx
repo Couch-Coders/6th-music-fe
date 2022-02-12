@@ -6,16 +6,10 @@ function Navbar() {
     <Nav>
       <NavList>
         <NavLi>
-          <Link to="/home">Home</Link>
+          <Link to="/">홈</Link>
         </NavLi>
         <NavLi>
-          <Link to="/dashboard">dashboard</Link>
-        </NavLi>
-        <NavLi>
-          <Link to="/register">register</Link>
-        </NavLi>
-        <NavLi>
-          <Link to="/detail">detail</Link>
+          <Link to="/register">등록하기</Link>
         </NavLi>
       </NavList>
     </Nav>

@@ -1,16 +1,20 @@
 import styled from 'styled-components';
 
-export const Nav = styled.nav``;
-
-export const NavList = styled.ul`
-  display: flex;
+export const Nav = styled.nav`
+  margin-top: 3px;
 `;
 
+export const NavList = styled.ul``;
+
 export const NavLi = styled.li`
-  width: 100%;
-  padding: 10px 0 0 0;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px;
   a {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
     text-align: center;
-    display: block;
+    padding: 10px;
   }
 `;
