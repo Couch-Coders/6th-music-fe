@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { lBoxStyle } from '../../Core/Interface/lStyle';
 
 //공통
 const HeaderCommon = styled.div`
@@ -35,6 +36,19 @@ export const HRightSection = styled(HeaderCommon)`
 
 export const PageContentWrapper = styled.div`
   width: 480px;
-  margin: 58px auto 0 auto;
-  /* background: yellow; */
+  margin: 30px auto 0 auto;
+`;
+
+export const PageTitle = styled.h1`
+  font-size: 34px;
+  margin-bottom: 6px;
+`;
+
+export const PageContent = styled.div<lBoxStyle>`
+  margin-top: ${({ fromAbove }: lBoxStyle) => fromAbove}px;
+`;
+
+export const PageSubtitle = styled.strong`
+  display: block;
+  font-size:14px: ;
 `;

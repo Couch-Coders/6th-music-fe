@@ -8,9 +8,6 @@ function Navbar() {
         <NavLi>
           <Link to="/">홈</Link>
         </NavLi>
-        <NavLi>
-          <Link to="/register">등록하기</Link>
-        </NavLi>
       </NavList>
     </Nav>
   );
