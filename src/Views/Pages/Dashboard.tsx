@@ -1,8 +1,9 @@
 import { PageContentWrapper } from '../Layout/Layout.style';
-import useAuth from '../../Server/useAuth';
+import { UserContext } from '../../Server/UseAuth';
+import { useContext } from 'react';
 
 function Dashboard() {
-  const { user } = useAuth();
+  const { user } = useContext(UserContext);
   return (
     <PageContentWrapper>
       <h1>Dashboard 페이지 입니다</h1>

@@ -1,21 +1,26 @@
-// import React from "react";
-import { signOut } from '@firebase/auth';
+import { useNavigate } from 'react-router-dom';
+import { getAuth, signOut } from '@firebase/auth';
 import { PageContentWrapper } from '../Layout/Layout.style';
-import { useEffect } from 'react';
-import useAuth from '../../Server/useAuth';
+import { app } from '../../Server/FirebaseConfig';
 
 function Logout() {
-  const { auth } = useAuth();
-  useEffect(() => {
-    (async () => {
-      await signOut(auth);
-    })();
-  }, [auth]);
+  const auth = getAuth(app);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      navigate('/');
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <PageContentWrapper>
       <h1>LogOut</h1>
       <hr />
+      <button onClick={handleLogout}>로그아웃버튼임</button>
       <p>Logout 페이지 입니다</p>
     </PageContentWrapper>
   );

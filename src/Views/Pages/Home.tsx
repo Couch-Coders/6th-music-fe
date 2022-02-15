@@ -1,5 +1,5 @@
-// import React from "react";
-
+import { UserContext } from '../../Server/UseAuth';
+import { useContext } from 'react';
 import { HomeData } from '../../Core/Config/Home';
 import { useNavigate } from 'react-router';
 
@@ -9,7 +9,7 @@ import {
   MainSearchBtn,
 } from '../Components/Button.style';
 
-import { MainInputWrapper, SearchInput } from '../Components/Input.style';
+import { SearchInput } from '../Components/Input.style';
 import {
   Category,
   CategoryLi,
@@ -22,19 +22,27 @@ import {
 } from '../Assets/Styles/Home.style';
 
 import { DivLinkWrapper, Img, ImgWrapper } from '../Components/Picture.style';
+import { InputWrapper } from '../Components/Input.style';
+// import { useEffect } from 'react';
 
 function Home() {
   let navigate = useNavigate();
+  const { user } = useContext(UserContext);
+
   const moveRegister = (): void => {
     navigate('/register');
+  };
+
+  const mainStyle = {
+    SearchWidth: 681,
   };
 
   return (
     <>
       <SearchBar>
-        <MainInputWrapper>
+        <InputWrapper inputWithBtn={mainStyle.SearchWidth}>
           <SearchInput />
-        </MainInputWrapper>
+        </InputWrapper>
         <MainSearchBtn>Search</MainSearchBtn>
       </SearchBar>
       <Category>
@@ -78,6 +86,7 @@ function Home() {
         </ItemList>
       </ItemWrapper>
 
+      {user && <h1>로그인됨</h1>}
       <CircleBtn onClick={moveRegister} />
     </>
   );
