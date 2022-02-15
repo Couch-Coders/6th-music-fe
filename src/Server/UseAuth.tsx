@@ -29,15 +29,32 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
         try {
           const token = await firebaseUser.getIdToken();
           defaultHeaders.Authorization = `Bearer ${token}`;
-          // const res = await fetch('/users/me', {
-          //   method: 'GET',
-          //   headers: defaultHeaders,
-          // });
-          // if (res.status === 200) {
-          //   const user = await res.json();
-          //   setUser(user);
-          // navigate('/');
-          // }
+          const res = await fetch('/users/me', {
+            method: 'GET',
+            headers: defaultHeaders,
+          });
+
+          console.log('users/me 서버를 거쳐 나온 res의 값은?', res);
+
+          if (res.status === 200) {
+            console.log('서버 결과 200 입니다');
+            const user = await res.json();
+            setUser(user);
+            navigate('/');
+          }
+
+          if (res.status === 404) {
+            console.log('서버결과 404 입니다, 유저를 등록해야 합니다');
+            const res = await fetch('/users/me', {
+              method: 'POST',
+              body: JSON.stringify({ title: 'React POST Request Example' }),
+              headers: defaultHeaders,
+            });
+            const user = await res.json();
+            setUser(user);
+            navigate('/');
+          }
+
           console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, token);
           console.log('defaultHeaders', defaultHeaders);
           setUser(firebaseUser);
