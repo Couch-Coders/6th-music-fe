@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
   background-color: white;
@@ -31,3 +31,23 @@ export const ModalTitle = styled.p`
 export const ModalButtons = styled.div`
   display: flex;
 `;
+
+// const ModalShow = keyframes`
+// from {
+//     opacity: 0;
+//     margin-top: -50px;
+//   }
+//   to {
+//     opacity: 1;
+//     margin-top: 0;
+//   }
+// `;
+
+// const ModalbgShow = keyframes`
+// from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// `;

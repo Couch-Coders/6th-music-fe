@@ -1,5 +1,5 @@
-import faker from '@faker-js/faker';
-import { lHome } from '../Interface/lHome';
+import faker from "@faker-js/faker";
+import { lHome } from "../Interface/lHome";
 
 export const HomeData: lHome[] = [
   {

@@ -1,10 +1,10 @@
-import { lModalProps } from '../../../Core/Interface/lModal';
+import { lModalProps } from "../../../Core/Interface/lModal";
 
-import { Alert } from '../../../Core/Config/AssetPath';
+import { Alert } from "../../../Core/Config/AssetPath";
 
-import { ModalCancel, ModalConfirm } from '../Button.style';
+import { ModalCancel, ModalConfirm } from "../Button.style";
 
-import { Img, ImgWrapper } from '../Picture.style';
+import { Img, ImgWrapper } from "../Picture.style";
 
 import {
   ModalButtons,
@@ -12,14 +12,14 @@ import {
   ModalImgWrapper,
   ModalTitle,
   ModalWrapper,
-} from './Modal.style';
+} from "./Modal.style";
 
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
 
 function Modal({ close, children }: lModalProps) {
   const navigate = useNavigate();
   const redirect = () => {
-    navigate('/');
+    navigate("/");
   };
   return (
     <ModalWrapper>

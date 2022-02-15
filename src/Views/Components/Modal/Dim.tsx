@@ -1,4 +1,4 @@
-import { DimWrapper } from './Dim.style';
+import { DimWrapper } from "./Dim.style";
 
 function Dim() {
   return (

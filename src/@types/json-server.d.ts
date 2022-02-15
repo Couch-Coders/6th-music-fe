@@ -4,9 +4,9 @@
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 // TypeScript Version: 2.3
 
-import { NextHandleFunction } from 'connect';
-import { Application, RequestHandler, Router } from 'express';
-import { LowdbSync } from 'lowdb';
+import { NextHandleFunction } from "connect";
+import { Application, RequestHandler, Router } from "express";
+import { LowdbSync } from "lowdb";
 
 export interface JsonServerRouter<T> extends Router {
   db: LowdbSync<T>;
