@@ -1,3 +1,5 @@
+// import React from "react";
+
 import {
   DivLinkWrapper,
   ImgWrapper,
@@ -9,7 +11,7 @@ import { LogoImg } from '../../../../Core/Config/AssetPath';
 function Logo() {
   return (
     <LogoWrapper>
-      <DivLinkWrapper to="/home">
+      <DivLinkWrapper to="/">
         <ImgWrapper>
           <Img src={LogoImg.info.src} alt={LogoImg.info.alt} />
         </ImgWrapper>
