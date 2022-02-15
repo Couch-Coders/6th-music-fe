@@ -3,6 +3,7 @@ import { lAsset } from '../Interface/lAsset';
 import logo from '../../Views/Assets/Images/logo.png';
 import RegisterBtn from '../../Views/Assets/Images/Register.png';
 import AlertBtn from '../../Views/Assets/Images/Alert.png';
+import TagDelete from '../../Views/Assets/Images/TagDelete.png';
 
 export const LogoImg: lAsset = {
   name: 'logo',
@@ -25,5 +26,13 @@ export const Alert: lAsset = {
   info: {
     src: `${AlertBtn}`,
     alt: '경고 이미지',
+  },
+};
+
+export const TagRemove: lAsset = {
+  name: 'TagDete',
+  info: {
+    src: `${TagDelete}`,
+    alt: '태그버튼 지우기',
   },
 };
