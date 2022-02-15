@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     }
     a{ text-decoration:none;}
     ul, li{ list-style:none;}
-    fieldset { border: 1px solid #c0c0c0; margin: 0 2px; padding: 0.35em 0.625em 0.75em; }
+    fieldset{border:0; font-size:0; margin:0; padding:0;}
     legend { border: 0;  padding: 0;  }
     textarea { overflow: auto; }
     optgroup { font-weight: bold; }
