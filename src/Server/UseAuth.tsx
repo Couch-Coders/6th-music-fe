@@ -11,7 +11,7 @@ interface UserCxt {
 export const UserContext = React.createContext<UserCxt | null>(null);
 export const defaultHeaders: any = {
   'Content-Type': 'application/json',
-  Accept: 'application/json',
+  'Accept': 'application/json',
 };
 
 const hours = new Date().getHours();
