@@ -29,6 +29,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
         try {
           const token = await firebaseUser.getIdToken();
           defaultHeaders.Authorization = `Bearer ${token}`;
+
           const res = await fetch('/users/me', {
             method: 'GET',
             headers: defaultHeaders,
@@ -41,18 +42,18 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
             const user = await res.json();
             setUser(user);
             navigate('/');
+            console.log('실제유저가 등록되어 홈 으로 이동합니다');
           }
 
           if (res.status === 404) {
             console.log('서버결과 404 입니다, 유저를 등록해야 합니다');
-            const res = await fetch('/users/me', {
+            const res = await fetch('/users', {
               method: 'POST',
-              body: JSON.stringify({ title: 'React POST Request Example' }),
               headers: defaultHeaders,
             });
             const user = await res.json();
             setUser(user);
-            navigate('/');
+            console.log('실제유저가 등록되어 홈 으로 이동합니다');
           }
 
           console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, token);
