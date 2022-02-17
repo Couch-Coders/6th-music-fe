@@ -1,21 +1,18 @@
-// import React from "react";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  User,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from '@firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
 import { useState } from 'react';
-// import { GoogleAuthProvider, signInWithPopup, getAuth } from '@firebase/auth';
 import { app } from '../../Server/FirebaseConfig';
 import { GoogleLoginButton } from 'react-social-login-buttons';
-import { PageContentWrapper } from '../Layout/Layout.style';
-import SignUp from '../Components/Register/SignUp';
-import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import {
+  LoginContent,
+  LoginTitle,
+  LoginBtn,
+  LoginWrapper,
+  LoginImg,
+  LoginActions,
+} from '../Assets/Styles/Login.style';
+import { Img, ImgWrapper } from '../Components/Picture.style';
+import { LogIn } from '../../Core/Config/AssetPath';
 
 function Login() {
   const hours = new Date().getHours();
@@ -31,32 +28,30 @@ function Login() {
     console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, result);
   };
 
-  // signInWithEmailAndPassword(auth, email, password)
-  //   .then((response) => {
-  //     navigate('/');
-  //     console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     console.log('에러가 발생했습니다', error);
-  //   });
+  const LoginStyle = {
+    ImgWidth: 542,
+  };
 
   return (
-    <PageContentWrapper>
-      <h1>Login</h1>
-      <hr />
-      <div className="">
-        <p>Login 페이지 입니다</p>
-        <GoogleLoginButton onClick={getResult} />
-      </div>
-      <Container
-        className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: '100vh' }}
-      >
-        <div className="w-100" style={{ maxWidth: '400px' }}>
-          <SignUp />
-        </div>
-      </Container>
-    </PageContentWrapper>
+    <LoginWrapper>
+      <LoginContent>
+        <LoginImg ImgWidth={LoginStyle.ImgWidth}>
+          <ImgWrapper>
+            <Img src={LogIn.info.src} alt={LogIn.info.alt} />
+          </ImgWrapper>
+        </LoginImg>
+        <LoginActions>
+          <LoginTitle>
+            반갑습니다.
+            <br />
+            Codingyo에 오신 것을 환영합니다
+          </LoginTitle>
+          <LoginBtn>
+            <GoogleLoginButton onClick={getResult} />
+          </LoginBtn>
+        </LoginActions>
+      </LoginContent>
+    </LoginWrapper>
   );
 }
 

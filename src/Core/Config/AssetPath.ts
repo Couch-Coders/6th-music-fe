@@ -4,6 +4,7 @@ import logo from '../../Views/Assets/Images/logo.png';
 import RegisterBtn from '../../Views/Assets/Images/Register.png';
 import AlertBtn from '../../Views/Assets/Images/Alert.png';
 import TagDelete from '../../Views/Assets/Images/TagDelete.png';
+import LoginImg from '../../Views/Assets/Images/Welcome.png';
 
 export const LogoImg: lAsset = {
   name: 'logo',
@@ -34,5 +35,13 @@ export const TagRemove: lAsset = {
   info: {
     src: `${TagDelete}`,
     alt: '태그버튼 지우기',
+  },
+};
+
+export const LogIn: lAsset = {
+  name: 'LogIn',
+  info: {
+    src: `${LoginImg}`,
+    alt: '로그인 이미지',
   },
 };

@@ -78,3 +78,16 @@ export const RegisterBtn = styled(ButtonCommon)<lBoxStyle>`
   color: ${({ textColor }: lBoxStyle) => textColor};
   background: ${({ bgColor }: lBoxStyle) => bgColor};
 `;
+
+export const LogoutBtn = styled(ButtonCommon)`
+  width: 100%;
+  line-height: 50px;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: rgb(0 0 0 / 50%) 0px 1px 2px;
+`;

@@ -7,4 +7,5 @@ export interface lBoxStyle {
   fromRight?: number;
   bgColor?: string;
   textColor?: string;
+  ImgWidth?: number;
 }

@@ -1,7 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signOut } from '@firebase/auth';
-import { PageContentWrapper } from '../Layout/Layout.style';
 import { app } from '../../Server/FirebaseConfig';
+import {
+  LoginActions,
+  LoginContent,
+  LoginImg,
+  LoginTitle,
+  LoginWrapper,
+} from '../Assets/Styles/Login.style';
+import { Img, ImgWrapper } from '../Components/Picture.style';
+import { LogIn } from '../../Core/Config/AssetPath';
+import { LogoutBtn } from '../Components/Button.style';
 
 function Logout() {
   const auth = getAuth(app);
@@ -16,13 +25,26 @@ function Logout() {
     }
   };
 
+  const LoginStyle = {
+    ImgWidth: 542,
+  };
+
   return (
-    <PageContentWrapper>
-      <h1>LogOut</h1>
-      <hr />
-      <button onClick={handleLogout}>로그아웃버튼임</button>
-      <p>Logout 페이지 입니다</p>
-    </PageContentWrapper>
+    <LoginWrapper>
+      <LoginContent>
+        <LoginImg ImgWidth={LoginStyle.ImgWidth}>
+          <ImgWrapper>
+            <Img src={LogIn.info.src} alt={LogIn.info.alt} />
+          </ImgWrapper>
+        </LoginImg>
+        <LoginActions>
+          <LoginTitle>
+            로그아웃 <br /> 정말 로그아웃하실건가요?
+          </LoginTitle>
+          <LogoutBtn onClick={handleLogout}>로그아웃</LogoutBtn>
+        </LoginActions>
+      </LoginContent>
+    </LoginWrapper>
   );
 }
 
