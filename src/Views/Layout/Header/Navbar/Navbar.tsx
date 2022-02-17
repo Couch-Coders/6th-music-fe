@@ -17,24 +17,6 @@ function Navbar() {
         <NavLi>
           <Link to="/dashboard">dashboard</Link>
         </NavLi>
-        {/* <NavLi>
-          <Link to="/test">Login Form</Link>
-        </NavLi>
-        <NavLi>
-          <Link to="/tlogin">Register Form</Link>
-        </NavLi> */}
-        <NavLi>
-          <Link to="/login">로그인 테스트</Link>
-        </NavLi>
-        {/* <NavLi>
-          <Link to="/register">상세페이지</Link>
-        </NavLi> */}
-        {/* <NavLi>
-          <Link to="/invoices">Invoices</Link>
-        </NavLi>
-        <NavLi>
-          <Link to="/expense">Expenses</Link>
-        </NavLi> */}
       </NavList>
     </Nav>
   );
