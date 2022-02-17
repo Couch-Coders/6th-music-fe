@@ -14,9 +14,6 @@ function Navbar() {
         <NavLi>
           <Link to="/register">등록하기</Link>
         </NavLi>
-        <NavLi>
-          <Link to="/dashboard">dashboard</Link>
-        </NavLi>
       </NavList>
     </Nav>
   );

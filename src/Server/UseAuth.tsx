@@ -11,7 +11,7 @@ interface UserCxt {
 export const UserContext = React.createContext<UserCxt | null>(null);
 export const defaultHeaders: any = {
   'Content-Type': 'application/json',
-  'Accept': 'application/json',
+  Accept: 'application/json',
 };
 
 const hours = new Date().getHours();
@@ -35,7 +35,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
             headers: defaultHeaders,
           });
 
-          console.log('users/me 서버를 거쳐 나온 res의 값은?', res);
+          console.log('현재 res 값은', res);
 
           if (res.status === 200) {
             console.log('서버 결과 200 입니다');

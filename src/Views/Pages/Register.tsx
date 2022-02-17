@@ -117,7 +117,6 @@ function Register() {
         </form>
       </PageContent>
 
-      <Link to="/">홈으로</Link>
       <div>
         {modalOpen && <Dim />}
         {modalOpen && (
