@@ -14,6 +14,9 @@ function Navbar() {
         <NavLi>
           <Link to="/register">등록하기</Link>
         </NavLi>
+        <NavLi>
+          <Link to="/form">폼</Link>
+        </NavLi>
       </NavList>
     </Nav>
   );

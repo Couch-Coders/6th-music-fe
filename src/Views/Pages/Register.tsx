@@ -30,6 +30,7 @@ import { RegisterBtn, UrlBtn } from '../Components/Button.style';
 import Radio from '../Components/Radio';
 import Tag from '../Components/Tag/Tag';
 import TextArea from '../Components/TextArea';
+import HolderTag from '../Components/NewTag/HolderTag';
 
 function Register() {
   // const { user } = useContext(UserContext);
@@ -97,6 +98,9 @@ function Register() {
                 <TagInput />
               </InputFull>
               <Tag />
+              <hr />
+              <HolderTag />
+              <hr />
             </TagContent>
           </TagGroup>
           <VideoText>
