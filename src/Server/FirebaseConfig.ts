@@ -14,8 +14,6 @@ const firebaseConfig: lFire = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
-console.log(firebaseConfig);
-
 const app = initializeApp(firebaseConfig);
 
 export { app };
