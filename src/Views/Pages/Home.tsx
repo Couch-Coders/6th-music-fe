@@ -1,34 +1,36 @@
 import { UserContext } from '../../Server/UseAuth';
 import { useContext } from 'react';
-import { HomeData } from '../../Core/Config/Home';
+import { VideoList } from '../../Core/Config/Home';
 import { useNavigate } from 'react-router';
-
 import {
   CircleBtn,
   MainCategoryBtn,
   MainSearchBtn,
 } from '../Components/Button.style';
-
 import { SearchInput } from '../Components/Input.style';
 import {
   Category,
   CategoryLi,
   CategoryList,
   Item,
+  ItemContent,
+  ItemInfo,
   ItemLi,
   ItemList,
+  ItemTitle,
   ItemWrapper,
   SearchBar,
+  Uploader,
 } from '../Assets/Styles/Home.style';
-
 import { DivLinkWrapper, Img, ImgWrapper } from '../Components/Picture.style';
 import { InputWrapper } from '../Components/Input.style';
-// import { useEffect } from 'react';
+import getYouTubeID from 'get-youtube-id';
+import { IconContext } from 'react-icons/lib';
+import { AiFillHeart } from 'react-icons/ai';
 
 function Home() {
   let navigate = useNavigate();
   const { user } = useContext(UserContext);
-
   const moveRegister = (): void => {
     navigate('/register');
   };
@@ -69,16 +71,51 @@ function Home() {
       </Category>
       <ItemWrapper>
         <ItemList>
-          {HomeData.map((data) => {
+          {VideoList.map((data) => {
+            let YoutubeId = getYouTubeID(data.url);
+
             return (
               <ItemLi key={data?.id}>
-                <DivLinkWrapper to={`/detail/${data?.itemIdx}`}>
+                <DivLinkWrapper to={`/detail/${data?.id}`}>
                   <Item>
                     <ImgWrapper>
-                      <Img src={data?.video} />
+                      <Img
+                        src={`https://img.youtube.com/vi/${YoutubeId}/maxresdefault.jpg`}
+                      />
+                      {/* <Img src={data?.video} /> */}
                     </ImgWrapper>
-                    <p>{data?.videoTitle}</p>
+                    {/* <p>{data?.videoTitle}</p> */}
                   </Item>
+                  <ItemInfo>
+                    <ItemTitle>{data.title}</ItemTitle>
+                    <ItemContent>
+                      <Uploader>{data.uploader}</Uploader>
+                    </ItemContent>
+                    <div className="" style={{ position: 'relative' }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          position: 'absolute',
+                          top: 0,
+                          right: 0,
+                        }}
+                      >
+                        <div>
+                          <IconContext.Provider value={{ size: '10px' }}>
+                            <AiFillHeart />
+                          </IconContext.Provider>
+                        </div>
+                        <span>15</span>
+                      </div>
+                      <div className="">
+                        <ul style={{ display: 'flex' }}>
+                          <li>#LOFI</li>
+                          <li>#POP</li>
+                          <li>#가사가 없는</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </ItemInfo>
                 </DivLinkWrapper>
               </ItemLi>
             );
