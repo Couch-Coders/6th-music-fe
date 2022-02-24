@@ -11,7 +11,7 @@ interface UserCxt {
 export const UserContext = React.createContext<UserCxt | null>(null);
 export const defaultHeaders: any = {
   'Content-Type': 'application/json',
-  'Accept': 'application/json',
+  Accept: 'application/json',
 };
 
 const hours = new Date().getHours();
@@ -54,6 +54,10 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
             const user = await res.json();
             setUser(user);
             console.log('실제유저가 등록되어 홈 으로 이동합니다');
+          }
+
+          if (res.status === 500) {
+            console.log('status 500 입니다');
           }
 
           console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, token);
