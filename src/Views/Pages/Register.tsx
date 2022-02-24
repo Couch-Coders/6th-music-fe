@@ -11,12 +11,7 @@ import {
   PageSubtitle,
 } from '../Layout/Layout.style';
 import { TextHidden } from '../Assets/Styles/Common.style';
-import {
-  InputFull,
-  InputWrapper,
-  TagInput,
-  VideoInput,
-} from '../Components/Input.style';
+import { InputWrapper, VideoInput } from '../Components/Input.style';
 import {
   Youtube,
   VideoArea,
@@ -28,22 +23,23 @@ import {
 } from '../Assets/Styles/Register.style';
 import { RegisterBtn, UrlBtn } from '../Components/Button.style';
 import Radio from '../Components/Radio';
-import Tag from '../Components/Tag/Tag';
 import TextArea from '../Components/TextArea';
-import HolderTag from '../Components/NewTag/HolderTag';
+import HolderTag from '../Components/TagFunc/HolderTag';
+import { useNavigate } from 'react-router';
 
 function Register() {
   // const { user } = useContext(UserContext);
-  // useEffect(() => {
-  //   let authToken = sessionStorage.getItem('Auth Token');
-  //   if (authToken) {
-  //     navigate('/');
-  //   }
+  const navigate = useNavigate();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token');
+    if (authToken) {
+      navigate('/');
+    }
 
-  //   if (!authToken) {
-  //     navigate('/test');
-  //   }
-  // });
+    // if (!authToken) {
+    //   navigate('/test');
+    // }
+  }, [navigate]);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -68,12 +64,15 @@ function Register() {
     fromRight: 16,
   };
 
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <PageContentWrapper>
-      {/* {user && <h1>로그인되면 ㅇ</h1>} */}
       <PageTitle>제목을 입력하세요 </PageTitle>
       <PageContent fromAbove={RegisterStyle.fromAbove}>
-        <form>
+        <form onSubmit={onSubmit}>
           <Youtube>
             <TextHidden>
               <legend>영상주소를 입력하는 공간입니다.</legend>
@@ -94,14 +93,8 @@ function Register() {
           <TagGroup>
             <PageSubtitle>태그</PageSubtitle>
             <TagContent>
-              <InputFull inputFull={RegisterStyle.InputFull}>
-                <TagInput />
-              </InputFull>
-              <Tag />
+              <HolderTag />
             </TagContent>
-            <hr />
-            <HolderTag />
-            <hr />
           </TagGroup>
 
           <VideoText>
