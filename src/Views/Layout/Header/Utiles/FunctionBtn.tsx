@@ -1,10 +1,11 @@
-import { RNav, RnItem, RnLi, RnList } from './FunctionsBtn.style';
 import { useContext } from 'react';
+import { RNav, RnItem, RnLi, RnList } from './FunctionsBtn.style';
 import { UserContext } from '../../../../Server/UseAuth';
 
 function FunctionsBtn() {
   const { user } = useContext(UserContext);
-  console.log('뾰로롱~', user);
+  console.log('FunctionBtn.tsx', user);
+
   return (
     <>
       <RNav>

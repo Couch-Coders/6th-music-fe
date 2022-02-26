@@ -14,9 +14,6 @@ export const defaultHeaders: any = {
   Accept: 'application/json',
 };
 
-const hours = new Date().getHours();
-const muninutes = new Date().getMinutes();
-
 const UseAuth = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
   const auth = getAuth(app);
@@ -24,7 +21,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      console.log('firebaseUser', firebaseUser);
+      console.log('UseAuth.tsx입니다. firebaseUser', firebaseUser);
       if (firebaseUser) {
         try {
           const token = await firebaseUser.getIdToken();
@@ -34,8 +31,6 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
             method: 'GET',
             headers: defaultHeaders,
           });
-
-          console.log('users/me 서버를 거쳐 나온 res의 값은?', res);
 
           if (res.status === 200) {
             console.log('서버 결과 200 입니다');
@@ -60,9 +55,17 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
             console.log('status 500 입니다');
           }
 
-          console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, token);
-          console.log('defaultHeaders', defaultHeaders);
+          localStorage.setItem('userAuth', JSON.stringify({ user }));
+
+          console.log('UseAuth.tsx안으로 이동했습니다. 변수 res는 ', res);
+          console.log(
+            'UseAuth.tsx안으로 이동했습니다. defaultHeaders',
+            defaultHeaders
+          );
+          console.log('UseAuth.tsx안으로 이동했습니다. 1');
+
           setUser(firebaseUser);
+          navigate('/');
         } catch (error) {
           console.log('At UseAuth.tsx, Error is found', error);
         }
@@ -74,7 +77,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
     return () => {
       unsubscribe();
     };
-  }, [auth, navigate]);
+  }, [auth, navigate, user]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

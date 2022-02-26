@@ -122,9 +122,7 @@ function Home() {
           })}
         </ItemList>
       </ItemWrapper>
-
-      {user && <h1>로그인됨</h1>}
-      <CircleBtn onClick={moveRegister} />
+      {user && <CircleBtn onClick={moveRegister} />}
     </>
   );
 }
