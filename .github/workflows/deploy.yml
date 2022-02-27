@@ -18,7 +18,6 @@ jobs:
       - name: checkout frontend
         uses: actions/checkout@v2
         with:
-          repository: Couch-Coders/6th-music-fe
           path: ./frontend
       - name: checkout backend
         uses: actions/checkout@v2
