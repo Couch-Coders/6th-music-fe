@@ -9,13 +9,13 @@ import rootReducrer from './Store/Modules/index';
 const store = createStore(rootReducrer);
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <GlobalStyle />
     <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );

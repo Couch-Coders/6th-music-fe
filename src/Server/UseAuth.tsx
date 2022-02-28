@@ -21,7 +21,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      console.log('UseAuth.tsx입니다. firebaseUser', firebaseUser);
+      console.log('2. UseAuth.tsx파일이 호출됨, firebaseUser', firebaseUser);
       if (firebaseUser) {
         try {
           const token = await firebaseUser.getIdToken();
@@ -55,17 +55,14 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
             console.log('status 500 입니다');
           }
 
-          localStorage.setItem('userAuth', JSON.stringify({ user }));
-
-          console.log('UseAuth.tsx안으로 이동했습니다. 변수 res는 ', res);
+          // console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, token);
+          // console.log('defaultHeaders', defaultHeaders);
           console.log(
-            'UseAuth.tsx안으로 이동했습니다. defaultHeaders',
-            defaultHeaders
+            '3.UseAuth.tsx가 호출됨, res = await fetch를 거친 후의 res',
+            res
           );
-          console.log('UseAuth.tsx안으로 이동했습니다. 1');
-
+          console.log('4.로그인 버튼을 누르면, 이 주석이 보인다.');
           setUser(firebaseUser);
-          navigate('/');
         } catch (error) {
           console.log('At UseAuth.tsx, Error is found', error);
         }
@@ -77,7 +74,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
     return () => {
       unsubscribe();
     };
-  }, [auth, navigate, user]);
+  }, [auth, navigate]);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
