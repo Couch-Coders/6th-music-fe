@@ -55,8 +55,8 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
             console.log('status 500 입니다');
           }
 
-          // console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, token);
-          // console.log('defaultHeaders', defaultHeaders);
+          console.log('현재token은', token);
+          console.log('defaultHeaders', defaultHeaders);
           console.log(
             '3.UseAuth.tsx가 호출됨, res = await fetch를 거친 후의 res',
             res

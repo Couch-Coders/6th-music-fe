@@ -5,7 +5,6 @@ import Detail from './Views/Pages/Detail';
 import Register from './Views/Pages/Register';
 import Login from './Views/Pages/Login';
 import Logout from './Views/Pages/Logout';
-import Dashboard from './Views/Pages/Dashboard';
 import PrivateRoute from './Views/Components/PrivateRoute';
 
 const Router = () => {
@@ -29,7 +28,6 @@ const Router = () => {
 
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/dashboard" element={<Dashboard />} />
       </Route>
     </Routes>
   );

@@ -1,7 +1,4 @@
-// import useAuth from '../../Server/useAuth';
 import { useState, useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { UserContext } from '../../Server/UseAuth';
 import Dim from '../Components/Modal/Dim';
 import Modal from '../Components/Modal/Modal';
 import {
@@ -22,46 +19,53 @@ import {
   FireBtnArea,
 } from '../Assets/Styles/Register.style';
 import { RegisterBtn, UrlBtn } from '../Components/Button.style';
+import { Img, ImgWrapper } from '../Components/Picture.style';
 import Radio from '../Components/Radio';
 import TextArea from '../Components/TextArea';
 import HolderTag from '../Components/TagFunc/HolderTag';
 import { useNavigate } from 'react-router';
+import getYouTubeID from 'get-youtube-id';
 
 function Register() {
-  // const { user } = useContext(UserContext);
+  const RegisterStyle = {
+    InputWithBtn: 408,
+    InputFull: 100,
+    fromAbove: 10,
+    fromRight: 16,
+  };
+
   const navigate = useNavigate();
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token');
     if (authToken) {
       navigate('/');
     }
-
-    // if (!authToken) {
-    //   navigate('/test');
-    // }
   }, [navigate]);
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState('');
+  const [youtubeId, setYoutubeid] = useState('');
 
   const openModal = (event: React.FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setModalOpen(true);
   };
-
   const closeModal = () => {
     setModalOpen(false);
   };
 
-  // const navigate = useNavigate();
-  // const redirect = () => {
-  //   navigate('/completed');
-  // };
-
-  const RegisterStyle = {
-    InputWithBtn: 408,
-    InputFull: 100,
-    fromAbove: 10,
-    fromRight: 16,
+  const handleUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVideoUrl(e.currentTarget.value);
+  };
+  const showThumnail = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const idRegex =
+      /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    if (!videoUrl.match(idRegex)) {
+      return;
+    } else {
+      setYoutubeid(getYouTubeID(videoUrl));
+    }
   };
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -81,11 +85,17 @@ function Register() {
               inputWithBtn={RegisterStyle.InputWithBtn}
               fromRight={RegisterStyle.fromRight}
             >
-              <VideoInput />
+              <VideoInput onChange={handleUrl} value={videoUrl} />
             </InputWrapper>
-            <UrlBtn>입력</UrlBtn>
+            <UrlBtn onClick={showThumnail}>입력</UrlBtn>
           </Youtube>
-          <VideoArea />
+          <VideoArea>
+            <ImgWrapper>
+              <Img
+                src={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
+              />
+            </ImgWrapper>
+          </VideoArea>
           <Genre>
             <PageSubtitle>장르</PageSubtitle>
             <Radio />

@@ -15,7 +15,6 @@ import { LogIn } from '../../Core/Config/AssetPath';
 
 function Login() {
   const navigate = useNavigate();
-
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   const getResult = async () => {

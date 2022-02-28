@@ -31,6 +31,7 @@ import { AiFillHeart } from 'react-icons/ai';
 function Home() {
   let navigate = useNavigate();
   const { user } = useContext(UserContext);
+
   const moveRegister = (): void => {
     navigate('/register');
   };
@@ -123,8 +124,7 @@ function Home() {
         </ItemList>
       </ItemWrapper>
 
-      {user && <h1>로그인됨</h1>}
-      <CircleBtn onClick={moveRegister} />
+      {user && <CircleBtn onClick={moveRegister} />}
     </>
   );
 }
