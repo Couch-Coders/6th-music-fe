@@ -1,5 +1,4 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
-import { useState } from 'react';
 import { app } from '../../Server/FirebaseConfig';
 import { GoogleLoginButton } from 'react-social-login-buttons';
 import { useNavigate } from 'react-router-dom';
@@ -15,17 +14,12 @@ import { Img, ImgWrapper } from '../Components/Picture.style';
 import { LogIn } from '../../Core/Config/AssetPath';
 
 function Login() {
-  const hours = new Date().getHours();
-  const muninutes = new Date().getMinutes();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   const getResult = async () => {
-    const result = await signInWithPopup(auth, provider);
-    console.log(`현재시각은 ${hours}:${muninutes}, 현재token은`, result);
+    await signInWithPopup(auth, provider);
+    navigate('/');
   };
 
   const LoginStyle = {

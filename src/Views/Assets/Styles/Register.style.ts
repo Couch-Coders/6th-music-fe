@@ -7,7 +7,6 @@ export const Youtube = styled.div`
 
 export const VideoArea = styled.div`
   width: 100%;
-  height: 250px;
   background: #f5f5f5;
   margin: 18px 0 0 0;
 `;

@@ -1,6 +1,7 @@
 import React from 'react';
 import TagList from './TagList';
 import { lInputTag } from '../../../Core/Interface/lForm';
+import { TagComp } from './Tag.style';
 
 function InputTag({
   defaultTags,
@@ -23,14 +24,19 @@ function InputTag({
   };
 
   return (
-    <div>
-      <TagList tags={defaultTags} onDeleteTag={onDelete} />
+    <>
       <input
         type="text"
         onKeyUp={(event) => onKeyup(event)}
         placeholder={placeholder}
+        style={{ display: 'block', width: '100%', padding: '5px' }}
       />
-    </div>
+      <TagComp>
+        <ul>
+          <TagList tags={defaultTags} onDeleteTag={onDelete} />
+        </ul>
+      </TagComp>
+    </>
   );
 }
 

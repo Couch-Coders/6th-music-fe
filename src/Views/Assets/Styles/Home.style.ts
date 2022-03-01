@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SearchBar = styled.div`
   display: flex;
@@ -34,12 +34,36 @@ export const ItemList = styled.ul`
 `;
 
 export const ItemLi = styled.li`
-  margin: 0 25px 0 0;
+  margin: 0 22px 10px 0;
   &:nth-child(4n) {
     margin-right: 0;
   }
 `;
 
 export const Item = styled.div`
-  width: 240px;
+  width: 242px;
+`;
+
+export const ItemInfo = styled.div`
+  border: 1px solid #f0f0f0;
+  padding: 15px;
+  box-sizing: border-box;
+`;
+
+export const ItemTitle = styled.strong`
+  display: block;
+  width: 200px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
+
+export const ItemContent = styled.div`
+  position: relative;
+`;
+
+export const Uploader = styled.span`
+  display: block;
+  margin: 0 0 10px 0;
 `;

@@ -1,13 +1,14 @@
+import Video from '../Components/VIdeoFunc/Video';
 import { PageContentWrapper } from '../Layout/Layout.style';
+import { useParams } from 'react-router-dom';
 
 function Detail() {
+  const param = useParams();
+  const urlNum = param.itemIdx;
+
   return (
     <PageContentWrapper>
-      <div>
-        <h1>디테일 페이지 입니다</h1>
-        <hr />
-        <p>디테일 페이지 내용</p>
-      </div>
+      <Video playNum={urlNum} />
     </PageContentWrapper>
   );
 }

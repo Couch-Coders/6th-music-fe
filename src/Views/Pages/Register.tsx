@@ -1,7 +1,4 @@
-// import useAuth from '../../Server/useAuth';
 import { useState, useEffect } from 'react';
-// import { Link, useNavigate } from 'react-router-dom';
-// import { UserContext } from '../../Server/UseAuth';
 import Dim from '../Components/Modal/Dim';
 import Modal from '../Components/Modal/Modal';
 import {
@@ -11,12 +8,7 @@ import {
   PageSubtitle,
 } from '../Layout/Layout.style';
 import { TextHidden } from '../Assets/Styles/Common.style';
-import {
-  InputFull,
-  InputWrapper,
-  TagInput,
-  VideoInput,
-} from '../Components/Input.style';
+import { InputWrapper, VideoInput } from '../Components/Input.style';
 import {
   Youtube,
   VideoArea,
@@ -27,40 +19,14 @@ import {
   FireBtnArea,
 } from '../Assets/Styles/Register.style';
 import { RegisterBtn, UrlBtn } from '../Components/Button.style';
+import { Img, ImgWrapper } from '../Components/Picture.style';
 import Radio from '../Components/Radio';
-import Tag from '../Components/Tag/Tag';
 import TextArea from '../Components/TextArea';
-import HolderTag from '../Components/NewTag/HolderTag';
+import HolderTag from '../Components/TagFunc/HolderTag';
+import { useNavigate } from 'react-router';
+import getYouTubeID from 'get-youtube-id';
 
 function Register() {
-  // const { user } = useContext(UserContext);
-  // useEffect(() => {
-  //   let authToken = sessionStorage.getItem('Auth Token');
-  //   if (authToken) {
-  //     navigate('/');
-  //   }
-
-  //   if (!authToken) {
-  //     navigate('/test');
-  //   }
-  // });
-
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const openModal = (event: React.FormEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
-  // const navigate = useNavigate();
-  // const redirect = () => {
-  //   navigate('/completed');
-  // };
-
   const RegisterStyle = {
     InputWithBtn: 408,
     InputFull: 100,
@@ -68,12 +34,49 @@ function Register() {
     fromRight: 16,
   };
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token');
+    if (authToken) {
+      navigate('/');
+    }
+  }, [navigate]);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [videoUrl, setVideoUrl] = useState('');
+  const [youtubeId, setYoutubeid] = useState('');
+
+  const openModal = (event: React.FormEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVideoUrl(e.currentTarget.value);
+  };
+  const showThumnail = (e: React.FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const idRegex =
+      /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    if (!videoUrl.match(idRegex)) {
+      return;
+    } else {
+      setYoutubeid(getYouTubeID(videoUrl));
+    }
+  };
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
   return (
     <PageContentWrapper>
-      {/* {user && <h1>로그인되면 ㅇ</h1>} */}
       <PageTitle>제목을 입력하세요 </PageTitle>
       <PageContent fromAbove={RegisterStyle.fromAbove}>
-        <form>
+        <form onSubmit={onSubmit}>
           <Youtube>
             <TextHidden>
               <legend>영상주소를 입력하는 공간입니다.</legend>
@@ -82,11 +85,17 @@ function Register() {
               inputWithBtn={RegisterStyle.InputWithBtn}
               fromRight={RegisterStyle.fromRight}
             >
-              <VideoInput />
+              <VideoInput onChange={handleUrl} value={videoUrl} />
             </InputWrapper>
-            <UrlBtn>입력</UrlBtn>
+            <UrlBtn onClick={showThumnail}>입력</UrlBtn>
           </Youtube>
-          <VideoArea />
+          <VideoArea>
+            <ImgWrapper>
+              <Img
+                src={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
+              />
+            </ImgWrapper>
+          </VideoArea>
           <Genre>
             <PageSubtitle>장르</PageSubtitle>
             <Radio />
@@ -94,14 +103,8 @@ function Register() {
           <TagGroup>
             <PageSubtitle>태그</PageSubtitle>
             <TagContent>
-              <InputFull inputFull={RegisterStyle.InputFull}>
-                <TagInput />
-              </InputFull>
-              <Tag />
+              <HolderTag />
             </TagContent>
-            <hr />
-            <HolderTag />
-            <hr />
           </TagGroup>
 
           <VideoText>
