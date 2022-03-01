@@ -62,7 +62,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
             res
           );
           console.log('4.로그인 버튼을 누르면, 이 주석이 보인다.');
-          setUser(firebaseUser);
+          // setUser(firebaseUser);
         } catch (error) {
           console.log('At UseAuth.tsx, Error is found', error);
         }
@@ -74,7 +74,7 @@ const UseAuth = ({ children }: { children: React.ReactNode }) => {
     return () => {
       unsubscribe();
     };
-  }, [auth, navigate]);
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
